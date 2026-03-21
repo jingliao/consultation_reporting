@@ -1,5 +1,80 @@
 ---
-title: "report"
-format: html
+title: "Healthcare Consultations by Provider Type"
+format: 
+  html:
+    toc: TRUE
+    number-sections: TRUE
+execute:
+  echo: FALSE
+  warning: FALSE
+  message: FALSE
 ---
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(knitr)
+
+df <- read_csv("../data/sample_data.csv")
+
+```
+
+Project Summary
+
+This report provides a simple overview of healthcare sevice usage across provider types, including GP, Nurse, Allied Health, and Dentist.
+
+Data Overview
+```{r}
+
+summary_tab <- df |>
+  summarise(total_people = sum(n_people),
+           total_consultations = sum(n_consultations),
+           avg_consultations_per_ppl = round(total_consultations / total_people, 2)
+  )
+
+kable(summary_tab)
+
+```
+
+Total Consultations by Provider Type
+```{r}
+
+summary_provider <- df |>
+  group_by(provider_type) |>
+  summarise(total_consultations = sum(n_consultations),
+           .groups = "drop")
+
+ggplot(summary_provider,
+       aes(x = provider_type,
+           y = total_consultations)
+       ) +
+  geom_col() +
+  labs(title = "Total consultations by provider type",
+       x = "Provider type",
+       y = "Total consultations")
+
+```
+
+Monthly Trend
+
+```{r}
+
+summary_monthly <- df |>
+  group_by(month, provider_type) |>
+  summarise(total_consultations = sum(n_consultations),
+            .groups = "drop")
+
+ggplot(summary_monthly,
+       aes(x = month,
+           y = total_consultations,
+           group = provider_type,
+           color = provider_type)
+       ) +
+  geom_line() +
+  labs(title = "Monthly consultation trend by provider type",
+       x = "Month",
+       y = "Total consultations")
+```
 
