@@ -1,0 +1,7 @@
+.Rhistory
+.RData
+.Rproj.user/
+output/
+*.html
+*.docx
+*_files/
