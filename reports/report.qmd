@@ -21,11 +21,38 @@ df <- read_csv("../data/sample_data.csv")
 
 ```
 
-Project Summary
+# Project Summary
 
-This report provides a simple overview of healthcare sevice usage across provider types, including GP, Nurse, Allied Health, and Dentist.
+This report analyses healthcare service utilisation across different provider types (GP, Nurse, Allied Health, Dentist).
 
-Data Overview
+Key findings include:
+
+- GP services account for the highest number of consultations overall.
+- Consultation patients vary across provider types over time.
+- Difference are observed across population groups (age and gender).
+
+These insights can support service planning and resource allocation decisions.
+
+The chart shows that consulation patterns differ across age groups, with certain provider types being more prominent in specific age segments. This suggests potential differences in healthcare needs across the population.
+```{r}
+
+age_provider <- df |>
+  group_by(age_group, provider_type) |>
+  summarise(total_consultations = sum(n_consultations),
+            .groups = "drop")
+
+ggplot(age_provider,
+       aes(x = age_group,
+           y = total_consultations,
+           fill = provider_type)
+       ) +
+  geom_col(position = "dodge") +
+  labs(title = "Consultations by age group and provider type",
+       x = "Age group",
+       y = "Total consultations")
+```
+
+# Data Overview
 ```{r}
 
 summary_tab <- df |>
@@ -38,7 +65,7 @@ kable(summary_tab)
 
 ```
 
-Total Consultations by Provider Type
+# Total Consultations by Provider Type
 ```{r}
 
 summary_provider <- df |>
@@ -57,7 +84,7 @@ ggplot(summary_provider,
 
 ```
 
-Monthly Trend
+# Monthly Trend
 
 ```{r}
 
@@ -77,4 +104,3 @@ ggplot(summary_monthly,
        x = "Month",
        y = "Total consultations")
 ```
-
