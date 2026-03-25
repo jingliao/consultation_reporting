@@ -33,7 +33,8 @@ Key findings include:
 
 These insights can support service planning and resource allocation decisions.
 
-The chart shows that consulation patterns differ across age groups, with certain provider types being more prominent in specific age segments. This suggests potential differences in healthcare needs across the population.
+The chart shows that consultation patterns differ across age groups, with certain provider types being more prominent in specific age segments. This suggests potential differences in healthcare needs across the population.
+
 ```{r}
 
 age_provider <- df |>
