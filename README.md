@@ -25,8 +25,9 @@ This project produces three types of reporting outputs:
    - Condensed version for stakeholder communication
    - Focuses on key findings and summary metrics
    
-3. **(Next step) Shiny App**
+3. **Shiny App**
    - Interactive dashboard for exploring consultation patterns
+   - The Shiny app allows users to interactively explore consultation trends and age-group breakdowns by provider type and region
    
 ## Key Features
 
