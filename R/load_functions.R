@@ -2,11 +2,8 @@
 # Title : functions for this project 
 # Author: Jing Liao
 # Date created : 22/03/2026
-# Date modified: 22/03/2026
+# Date modified: 24/04/2026
 #################### Header End   ####################
-
-library(dplyr)
-library(tidyr)
 
 func_create_sample_data <- function(){
   
@@ -26,7 +23,48 @@ func_create_sample_data <- function(){
            n_consultations = n_people * sample(1:4,
                                                n(),
                                                replace = TRUE)
-           )
+    )
   
 }
 
+cat("func_create_sample_data() successfully loaded.", "\n\n")
+
+# ingest data frame and apply consistent formation for flex table output
+
+func_df_to_flex <- function(func_df){
+  
+  func_df_flex <- func_df |>
+    flextable() |>
+    theme_box() |>
+    align(align = "center", part = "header") |>
+    align(align = "center", part = "body") |>
+    fontsize(part = "all", size = 9) |>
+    font(fontname = "Calibri", part = "all") |>
+    bg(bg = "steelblue", part = "header") |>
+    color(color = "white", part = "header") |>
+    padding(padding.top = 2, part = "body") |>
+    padding(padding.bottom = 2, part = "body") |>
+    autofit()
+  
+  return(func_df_flex)
+  
+}
+
+cat("func_df_to_flex() successfully loaded.", "\n\n")
+
+# force flex object to fit on page width
+# source from https://stackoverflow.com/questions/57175351/flextable-autofit-in-a-rmarkdown-to-word-doc-causes-table-to-go-outside-page-mar
+
+func_FitFlextableToPage <- function(ft, pgwidth){
+  
+  ft_out <- ft |> 
+    autofit()
+  ft_out <- width(ft, 
+                  width = dim(ft_out)$widths*pgwidth / (flextable_dim(ft_out)$widths)
+  )
+  
+  return(ft_out)
+  
+}
+
+cat("func_FitFlextableToPage() successfully loaded.", "\n\n")

@@ -87,5 +87,3 @@ server <- function(input,
 
 shinyApp(ui = ui,
          server = server)
-
-# placeholder: before you commence, go back to qmd, rmd and readme and review it

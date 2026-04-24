@@ -1,5 +1,5 @@
 ---
-title: "Healthcare Consultations by Provider Type"
+title: "Healthcare Consultations by Provider Type (Quarto)"
 format: 
   html:
     toc: TRUE
@@ -48,9 +48,10 @@ ggplot(age_provider,
            fill = provider_type)
        ) +
   geom_col(position = "dodge") +
-  labs(title = "Consultations by age group and provider type",
+  labs(title = "Consultations by age group",
        x = "Age group",
-       y = "Total consultations")
+       y = "Total consultations",
+       fill = "Provider Type")
 ```
 
 # Data Overview
@@ -58,9 +59,12 @@ ggplot(age_provider,
 
 summary_tab <- df |>
   summarise(total_people = sum(n_people),
-           total_consultations = sum(n_consultations),
-           avg_consultations_per_ppl = round(total_consultations / total_people, 2)
-  )
+            total_consultations = sum(n_consultations),
+            avg_consultations_per_ppl = round(total_consultations / total_people, 2)
+            ) |>
+  rename(`Total People` = total_people,
+         `Total Consultations` = total_consultations,
+         `Average Consultations per person` = avg_consultations_per_ppl)
 
 kable(summary_tab)
 
@@ -78,7 +82,7 @@ ggplot(summary_provider,
        aes(x = provider_type,
            y = total_consultations)
        ) +
-  geom_col() +
+  geom_col(fill = "steelblue") +
   labs(title = "Total consultations by provider type",
        x = "Provider type",
        y = "Total consultations")
@@ -100,8 +104,10 @@ ggplot(summary_monthly,
            group = provider_type,
            color = provider_type)
        ) +
-  geom_line() +
+  geom_line(color = "steelblue", linewidth = 1) +
+  facet_wrap(~ provider_type) +
   labs(title = "Monthly consultation trend by provider type",
-       x = "Month",
-       y = "Total consultations")
+       x = "",
+       y = "Total consultations") +
+  theme_minimal()
 ```

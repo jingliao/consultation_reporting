@@ -1,9 +1,8 @@
 ---
-title: "Healthcare Consultation Service Report"
-output: 
-  word_document:
-
-<!--  use it when you have the docx,  reference_docx: ../templates/reference.docx -->
+title: "Healthcare Consultation Service Report (R Markdown)"
+output:
+  html_document:
+    df_print: paged
 ---
 
 ## Project Summary
@@ -16,26 +15,36 @@ Key findings include:
 - Consultation patients vary across provider types over time.
 - Difference are observed across population groups (age and gender).
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message =FALSE}
 
-library(dplyr)
-library(ggplot2)
-library(readr)
-library(knitr)
+library(here)
 
-df <- read_csv("../data/sample_data.csv")
+source(here("dep", "load_global_parameters.R"))
 
-summary_tab <- df |>
-  summarise(total_people = sum(n_people),
-           total_consultations = sum(n_consultations),
-           avg_consultations_per_ppl = round(total_consultations / total_people, 2)
-  )
-
-kable(summary_tab)
+df <- read_csv(here("data", "sample_data.csv"))
 
 ```
 
-```{r summary_provider, echo=FALSE, message=FALSE, warning=FALSE}
+Summary table
+
+```{r summary_provider, echo=FALSE}
+summary_tab <- data.frame(
+  Metric = c("Total People",
+             "Total Consultations",
+             "Average Consultations per person"),
+  Value = c(sum(df$n_people),
+            sum(df$n_consultations),
+            round(sum(df$n_consultations) / sum(df$n_people), 2)
+            )
+  )
+
+func_FitFlextableToPage(summary_tab |>
+                          func_df_to_flex(),
+                        pgwidth = 7.5)
+
+```
+
+```{r summary_provider_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
 
 summary_provider <- df |>
@@ -47,8 +56,8 @@ ggplot(summary_provider,
        aes(x = provider_type,
            y = total_consultations)
        ) +
-  geom_col() +
-  labs(title = "Total consultations by provider type",
+  geom_col(fill = "steelblue") +
+  labs(title = "Total consultations",
        x = "Provider type",
        y = "Total consultations")
 
