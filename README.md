@@ -3,16 +3,18 @@
 Project : Healthcare Consultation Reporting
 Author  : Jing Liao
 Last updated date  : 20-04-2026
-Stakeholders       : 
+Stakeholders       : humans
 
 ## 1. Purpose
 
-This project demonstrates an end-to-end reporting workflow using R, including data preparation, analysis, and multiple reporting outputs (i.e. html, word file and a Shiny app).
+This project demonstrates an end-to-end reporting workflow using R, including data preparation, analysis, and multiple reporting outputs 
+(e.g. html, word file and a Shiny app).
+
 
 ## 2. Dependencies
 
 - R version 4.5.0
-- Required R packages, see R/ (dep/?)
+- Required R packages, details see R/
 
 ## 3. Project Overview
 
@@ -24,6 +26,8 @@ The analysis explores healthcare consultation services across different provider
 - Dentist
 
 The project focuses on how consultation patterns vary across time and population groups.
+The data set is generated via R/run_generate_data.R and stored in data/sample_data.csv.
+All analyses and reports are based on this data set to ensure consistency.
 
 ## 4. Architecture/Structure
 
@@ -35,52 +39,54 @@ my_ds_portfolio/portfolio_projects/consultation_reporting/
        |----- load_functions.R
        |----- load_global_parameters.R
        |----- load_packages.R
+       |----- run_generate_data.R
 |----- reports/
        |----- report_quarto_files/ 
        |----- report_quarto.qmd
        |----- report_quarto.html
        |----- report_rmarkdown.Rmd
        |----- report_rmarkdown.html
-       |----- Project1_report_template.docx (template for rmakdown word output)
+       |----- Project1_report_template.docx
 |----- app/
        |----- app.R
+       |----- ui.R
+       |----- server.R
+|----- design/
+       |----- pipeline_visualisation.R
+       |----- DAG.html
+       |----- DAG_files
 
 ## 5. Criteria/Business Rules
 
+The sample dataset was simulated based on the following criteria:
+
+1. Consultation dates are defined as the first day of each month in 2024.
+2. Service regions include North, Central and South region.
+3. Consultation provider types include General Practitioner (GP), Nurse, Allied Health and Dentist.
+4. Gender is restricted to Male and Female.
+5. Age groups are categorised as 18-29, 30-49 and 50+.
+6. The number of people receiving consultations and the number of consultations provided per month are generated using discrete uniform distributions.
+7. It is assumed that an individual receives fewer than five consultations within a given month.
+8. All categorical variables are sampled independently unless otherwise specified.
 
 ## 6. Deployment
 
+To reproduce the report locally, simply render .qmd or knit .Rmd file in reports/. 
+To reproduce the dashboard, simply hit 'Run App' on the top right corner of the panel in app/app.R
 
 ## 7. Outputs
 
+This project can produce four types of reporting outputs:
 
-To reproduce the report locally:
+1. HTML
+2. Word
+3. pdf
+4. a Shiny dashboard
 
-```r
-quarto::quarto_render("reports/report.qmd")
-```
-Alternatively, open the file in RStudio and click Render.
+For demonstration, the current type of outputs is HTML.
 
-This project produces three types of reporting outputs:
-
-1. **HTML Report**
-   - Analytical view with multiple visualisation
-   - Used for exploration and insight generation
-   
-2. **Word Report**
-   - Condensed version for stakeholder communication
-   - Focuses on key findings and summary metrics
-   
-3. **Shiny App**
-   - Interactive dashboard for exploring consultation patterns
-   - The Shiny app allows users to interactively explore consultation trends and age-group breakdowns by provider type and region
-   
 ## 8. Known Issues/To Do
+R Markdown can knit to Word perfectly fine, but an issue at the moment is Windows (OS) sometimes blocks writing to the .docx file 
 
 ## 9. Useful Commands
 
-## Example Insights
-
-- Allied Health services account for the largest share of consultations
-- Healthcare consultation services varies across provider types and over time
-- Differences are observed across age groups

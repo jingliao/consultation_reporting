@@ -5,7 +5,7 @@ output:
     df_print: paged
 ---
 
-## Project Summary
+# Project Summary
 
 This report summarises healthcare consultation service across provider types (GP, Nurse, Allied Health, Dentist).
 
@@ -19,30 +19,33 @@ Key findings include:
 
 library(here)
 
-source(here("dep", "load_global_parameters.R"))
+source(here("R", "load_global_parameters.R"))
 
 df <- read_csv(here("data", "sample_data.csv"))
 
 ```
 
-Summary table
+## Table
 
 ```{r summary_provider, echo=FALSE}
-summary_tab <- data.frame(
-  Metric = c("Total People",
-             "Total Consultations",
-             "Average Consultations per person"),
-  Value = c(sum(df$n_people),
-            sum(df$n_consultations),
-            round(sum(df$n_consultations) / sum(df$n_people), 2)
-            )
-  )
+summary_tab <- df |> 
+  summarise(n_people = sum(n_people),
+            n_consultations = sum(n_consultations),
+            avg_consultations = round(sum(n_consultations) / sum(n_people), 2),
+            .groups = "drop") |>
+  dplyr::rename("Total People" = n_people,
+             "Total Consultations" = n_consultations,
+             "Average Consultations per person" = avg_consultations)
 
 func_FitFlextableToPage(summary_tab |>
                           func_df_to_flex(),
                         pgwidth = 7.5)
 
+
 ```
+
+
+# Graph 
 
 ```{r summary_provider_plot, echo=FALSE, message=FALSE, warning=FALSE}
 

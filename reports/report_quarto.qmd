@@ -12,12 +12,12 @@ execute:
 
 ```{r}
 
-library(dplyr)
-library(ggplot2)
-library(readr)
-library(knitr)
+library(here)
 
-df <- read_csv("../data/sample_data.csv")
+source(here("R", "load_global_parameters.R"))
+
+# single source of truth
+df <- read_csv(here("data", "sample_data.csv"))
 
 ```
 
