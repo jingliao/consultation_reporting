@@ -31,6 +31,8 @@ All analyses and reports are based on this data set to ensure consistency.
 
 ## 4. Architecture/Structure
 
+```text
+
 my_ds_portfolio/portfolio_projects/consultation_reporting/
 |----- README.md
 |----- data/
@@ -55,6 +57,8 @@ my_ds_portfolio/portfolio_projects/consultation_reporting/
        |----- pipeline_visualisation.R
        |----- DAG.html
        |----- DAG_files
+
+```
 
 ## 5. Criteria/Business Rules
 
