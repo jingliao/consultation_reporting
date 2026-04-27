@@ -93,4 +93,4 @@ For demonstration, the current type of outputs is HTML.
 R Markdown can knit to Word perfectly fine, but an issue at the moment is Windows (OS) sometimes blocks writing to the .docx file 
 
 ## 9. Useful Commands
-
+The design/ folder is used for demonstration purposes only. It is not part of the project pipeline or workflow.
