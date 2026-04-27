@@ -34,6 +34,7 @@ All analyses and reports are based on this data set to ensure consistency.
 ```text
 
 my_ds_portfolio/portfolio_projects/consultation_reporting/
+|----- consultation_reporting.Rproj
 |----- README.md
 |----- data/
        |----- sample_data.csv
