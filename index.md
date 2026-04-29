@@ -3,7 +3,7 @@
 ## Quick View
 
 - [Pipeline design:](https://jingliao.github.io/consultation_reporting/design/DAG.html)
-- [xample report:](https://jingliao.github.io/consultation_reporting/reports/report_quarto.html)
+- [Example report:](https://jingliao.github.io/consultation_reporting/reports/report_quarto.html)
 
 ## About
 
