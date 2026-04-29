@@ -2,12 +2,18 @@
 
 ```text
 
-Project             : Healthcare Consultation Reporting
+Project             : SSimulated Healthcare Consultation Reporting
 Author              : Jing Liao
 Last updated date   : 20-04-2026
 Stakeholders        : humans
 
 ```
+
+# Quick Entry View
+
+- project summary, see this README
+- pipeline design, see `design/DAG.html`
+- example output, see `reports/report_quarto.html`
 
 ## 1. Purpose
 
@@ -72,7 +78,7 @@ The sample dataset was simulated based on the following criteria:
 1. Consultation dates are defined as the first day of each month in 2024.
 2. Service regions include North, Central and South region.
 3. Consultation provider types include General Practitioner (GP), Nurse, Allied Health and Dentist.
-4. Gender is restricted to Male and Female.
+4. Gender is simplified to Male and Female for demonstration purposes.
 5. Age groups are categorised as 18-29, 30-49 and 50+.
 6. The number of people receiving consultations and the number of consultations provided per month are generated using discrete uniform distributions.
 7. It is assumed that an individual receives fewer than five consultations within a given month.
@@ -85,12 +91,11 @@ To reproduce the dashboard, simply hit 'Run App' on the top right corner of the 
 
 ## 7. Outputs
 
-This project can produce four types of reporting outputs:
+This project demonstrates multiple reporting outputs for different audiences:
 
-1. HTML
-2. Word
-3. pdf
-4. a Shiny dashboard
+- HTML report
+- Word/PDF report
+- Shiny dashboard
 
 For demonstration, the current type of outputs is HTML.
 

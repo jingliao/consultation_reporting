@@ -1,5 +1,5 @@
 ---
-title: "Healthcare Consultations by Provider Type (Quarto)"
+title: "Simulated Healthcare Consultations by Provider Type (Quarto)"
 format: 
   html:
     toc: TRUE

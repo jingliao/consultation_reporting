@@ -1,8 +1,22 @@
+# R session and Studio
 .Rhistory
 .RData
 .Rproj.user/
-output/
-*.html
-*.docx
-*_files/
+
+# report outputs
+reports/*.docx
+reports/*.html
+reports/*_files/
+
+!reports/report_quarto.html
+!reports/report_quarto_files/
+
+# design outputs
+design/*.html
+design/*_files/
+
+!design/DAG_files/
+!design/DAG.html
+
+# msc
 .positai
