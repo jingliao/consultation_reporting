@@ -2,7 +2,7 @@
 
 ```text
 
-Project             : SSimulated Healthcare Consultation Reporting
+Project             : Simulated Healthcare Consultation Reporting
 Author              : Jing Liao
 Last updated date   : 20-04-2026
 Stakeholders        : humans
