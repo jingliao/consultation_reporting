@@ -45,6 +45,7 @@ All analyses and reports are based on this data set to ensure consistency.
 
 my_ds_portfolio/portfolio_projects/consultation_reporting/
 |----- consultation_reporting.Rproj
+|----- index.md (a landing page to GitHub Page)
 |----- README.md
 |----- data/
        |----- sample_data.csv
