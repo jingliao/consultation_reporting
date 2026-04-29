@@ -1,9 +1,13 @@
 # Metadata
 
-Project : Healthcare Consultation Reporting
-Author  : Jing Liao
-Last updated date  : 20-04-2026
-Stakeholders       : humans
+```text
+
+Project             : Healthcare Consultation Reporting
+Author              : Jing Liao
+Last updated date   : 20-04-2026
+Stakeholders        : humans
+
+```
 
 ## 1. Purpose
 
@@ -14,7 +18,7 @@ This project demonstrates an end-to-end reporting workflow using R, including da
 ## 2. Dependencies
 
 - R version 4.5.0
-- Required R packages, details see R/
+- Required R packages, details see `R/`
 
 ## 3. Project Overview
 
@@ -26,7 +30,7 @@ The analysis explores healthcare consultation services across different provider
 - Dentist
 
 The project focuses on how consultation patterns vary across time and population groups.
-The data set is generated via R/run_generate_data.R and stored in data/sample_data.csv.
+The data set is generated via `R/run_generate_data.R` and stored in `data/sample_data.csv`.
 All analyses and reports are based on this data set to ensure consistency.
 
 ## 4. Architecture/Structure
@@ -76,8 +80,8 @@ The sample dataset was simulated based on the following criteria:
 
 ## 6. Deployment
 
-To reproduce the report locally, simply render .qmd or knit .Rmd file in reports/. 
-To reproduce the dashboard, simply hit 'Run App' on the top right corner of the panel in app/app.R
+To reproduce the report locally, simply render `.qmd` or knit `.Rmd` file in `reports/`. 
+To reproduce the dashboard, simply hit 'Run App' on the top right corner of the panel in `app/app.R`
 
 ## 7. Outputs
 
