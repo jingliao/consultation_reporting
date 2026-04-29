@@ -12,5 +12,5 @@ This project demonstrates an end-to-end reporting workflow using R, including da
 
 ## Documentation
 
-[View full project documentation:](https://jingliao.github.io/consultation_reporting/)
+[View full project documentation:](https://jingliao.github.io/consultation_reporting/README.md)
 
