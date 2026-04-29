@@ -27,7 +27,6 @@ func_create_sample_data <- function(){
   
 }
 
-cat("func_create_sample_data() successfully loaded.", "\n\n")
 
 # ingest data frame and apply consistent formation for flex table output
 
@@ -50,8 +49,6 @@ func_df_to_flex <- function(func_df){
   
 }
 
-cat("func_df_to_flex() successfully loaded.", "\n\n")
-
 # force flex object to fit on page width
 # source from https://stackoverflow.com/questions/57175351/flextable-autofit-in-a-rmarkdown-to-word-doc-causes-table-to-go-outside-page-mar
 
@@ -66,5 +63,3 @@ func_FitFlextableToPage <- function(ft, pgwidth){
   return(ft_out)
   
 }
-
-cat("func_FitFlextableToPage() successfully loaded.", "\n\n")
